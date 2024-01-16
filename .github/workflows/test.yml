@@ -1,0 +1,33 @@
+name: Test `next build`
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '19'
+          cache: 'npm'
+      - name: Install duckdb-utils depdenencies
+        run: |
+          cd duckdb-utils
+          npm install
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Set up `npm link`
+        run: |
+          cd duckdb-utils
+          npm link
+      - name: Run `npm link`
+        run: npm link duckdb-utils
+      - name: Re-run `next build`
+        run: npm run build
