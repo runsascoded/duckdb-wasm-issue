@@ -13,7 +13,7 @@ In some situations, [`AsyncDuckDB.instantiate`] emits this error and hangs `next
 worker terminated with 1 pending requests
 ```
 ## Github Action repro
-[Here's an example of the error in a Github Action](https://github.com/runsascoded/duckdb-wasm-npm-link/actions/runs/7547556452/job/20547769625#step:6:58).
+[Here's an example of the error in a Github Action][GHA error].
 
 ## Dockerfile repro
 
@@ -44,3 +44,4 @@ RUN npm run build  # ❌ `worker terminated with 1 pending requests` inside Asyn
 This holds true both in Docker, and on the host, on my M1 macbook as well as on an Amazon Linux instance I tested on.
 
 [`AsyncDuckDB.instantiate`]: https://github.com/duckdb/duckdb-wasm/blob/v1.28.0/packages/duckdb-wasm/src/parallel/async_bindings.ts#L329-L341
+[GHA error]: https://github.com/runsascoded/duckdb-wasm-npm-link/actions/runs/7548011239/job/20549200841#step:6:58
