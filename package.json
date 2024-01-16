@@ -1,0 +1,25 @@
+{
+  "name": "next-duckdb-wasm",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@duckdb/duckdb-wasm": "^1.28.1-dev87.0",
+    "next": "^13.3.4",
+    "duckdb-utils": "file:duckdb-utils/dist",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "web-worker": "^1.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.11.4",
+    "@types/react": "18.2.48",
+    "@types/react-dom": "18.2.18",
+    "typescript": "5.3.3"
+  }
+}

@@ -1,0 +1,3 @@
+[submodule "duckdb-utils"]
+	path = duckdb-utils
+	url = https://github.com/runsascoded/next-utils
