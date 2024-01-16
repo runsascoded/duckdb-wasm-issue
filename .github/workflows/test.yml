@@ -17,15 +17,15 @@ jobs:
           cache: 'npm'
       - name: Install duckdb-utils depdenencies
         run: |
-          cd duckdb-utils
-          npm install
+          cd duckdb-utils/dist
+          npm ci
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Build
         run: npm run build
       - name: Set up `npm link`
         run: |
-          cd duckdb-utils
+          cd duckdb-utils/dist
           npm link
       - name: Run `npm link`
         run: npm link duckdb-utils

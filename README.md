@@ -26,5 +26,9 @@ RUN npm run build  # ❌ `worker terminated with 1 pending requests` inside Asyn
 
 [duckdb-utils/src/duckdb.ts](duckdb-utils/src/duckdb.ts) instantiates an `AsyncDuckDB`:
 ```typescript
-
+const { worker, bundle } = await nodeWorkerBundle()
+const logger = { log: () => {}, }
+const db = new AsyncDuckDB(logger, worker)
 ```
+
+This works when the [duckdb-utils](duckdb-utils) module is installed directly, but breaks when `npm link`ed.
