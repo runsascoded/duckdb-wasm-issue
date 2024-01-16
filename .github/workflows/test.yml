@@ -23,11 +23,3 @@ jobs:
         run: npm i
       - name: Build
         run: npm run build
-      - name: Set up `npm link`
-        run: |
-          cd duckdb-utils/dist
-          npm link
-      - name: Run `npm link`
-        run: npm link duckdb-utils
-      - name: Re-run `next build`
-        run: npm run build
