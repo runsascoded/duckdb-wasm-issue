@@ -18,9 +18,9 @@ jobs:
       - name: Install duckdb-utils depdenencies
         run: |
           cd duckdb-utils/dist
-          npm ci
+          npm i
       - name: Install dependencies
-        run: npm ci
+        run: npm i
       - name: Build
         run: npm run build
       - name: Set up `npm link`
