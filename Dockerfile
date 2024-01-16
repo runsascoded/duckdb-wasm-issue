@@ -5,7 +5,8 @@ COPY . /src
 RUN cd /src/duckdb-utils/dist && npm i
 WORKDIR /src
 RUN npm i
-RUN npm run build  # this fails in Github Actions, but not in this Docker build, or on the underlying host, on my M1 macbook or an Amazon Linux EC2 instance
+# This fails in Github Actions, but not in this Docker build, or on the underlying host, on my M1 macbook or an Amazon Linux EC2 instance
+RUN npm run build
 
 # ❌ Build fails with `npm link`ed duckdb-utils
 RUN cd /src/duckdb-utils/dist && npm link
