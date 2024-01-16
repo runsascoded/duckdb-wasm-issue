@@ -15,10 +15,6 @@ jobs:
         with:
           node-version: '19'
           cache: 'npm'
-      - name: Install duckdb-utils depdenencies
-        run: |
-          cd duckdb-utils/dist
-          npm i
       - name: Install dependencies
         run: npm i
       - name: Build
