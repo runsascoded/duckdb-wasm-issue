@@ -5,14 +5,20 @@ In some situations, [`AsyncDuckDB.instantiate`] emits this error and hangs `next
 worker terminated with 1 pending requests
 ```
 
+I've filed this as [duckdb-wam#1588].
+
 ## Repro
 
 [duckdb-utils/src/duckdb.ts](duckdb-utils/src/duckdb.ts) calls [`AsyncDuckDB.instantiate`]:
 ```typescript
 const { worker, bundle } = await nodeWorkerBundle()
+console.log("bundle:", bundle)
 const logger = { log: () => {}, }
 const db = new AsyncDuckDB(logger, worker)
-await db.instantiate(bundle.mainModule, bundle.pthreadWorker)  // ❌ worker terminated with 1 pending requests
+console.log("instantiating db")
+await db.instantiate(bundle.mainModule, bundle.pthreadWorker)  // ❌ "worker terminated with 1 pending requests"
+console.log("instantiated db")
+worker terminated with 1 pending requests
 ```
 
 ### Github Actions repro
@@ -83,3 +89,4 @@ All the repros I've found involve Next.js, but the fact that the failure occurs 
 [`AsyncDuckDB.instantiate`]: https://github.com/duckdb/duckdb-wasm/blob/v1.28.0/packages/duckdb-wasm/src/parallel/async_bindings.ts#L329-L341
 [GHA error]: https://github.com/runsascoded/duckdb-wasm-issue/actions/runs/7548011239/job/20549200841#step:6:58
 [next.js#57819]: https://github.com/vercel/next.js/discussions/57819
+[duckdb-wam#1588]: https://github.com/duckdb/duckdb-wasm/issues/1588
