@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@duckdb/duckdb-wasm": "^1.28.1-dev87.0",
     "next": "^13.3.4",
     "duckdb-utils": "file:duckdb-utils/dist",
     "react": "18.2.0",
